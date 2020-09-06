@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { appartments } from '../data/appartments';
 
 @Component({
   selector: 'app-appartment-listing',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./appartment-listing.component.css']
 })
 export class AppartmentListingComponent implements OnInit {
+
+  appartments: Array<any> = appartments;
 
   constructor() { }
 

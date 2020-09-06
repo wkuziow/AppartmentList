@@ -1,1 +1,11 @@
-<p>appartment-listing works!</p>
+<div class="row">
+  <div *ngFor="let appartment of appartments" class="col-sm-4">
+    <div class="card">
+      <img src="assets/images/{{appartment.image}}.jpg" alt="">
+      <h3>{{appartment.address}}</h3>
+      <h4>{{appartment.price}}</h4>
+      <p>{{appartment.type}}</p>
+    </div>
+
+  </div>
+</div>
