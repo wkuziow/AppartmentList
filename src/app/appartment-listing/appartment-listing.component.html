@@ -1,11 +1,61 @@
 <div class="row">
   <div *ngFor="let appartment of appartments" class="col-sm-4">
     <div class="card">
-      <img src="assets/images/{{appartment.image}}.jpg" alt="">
-      <h3>{{appartment.address}}</h3>
-      <h4>{{appartment.price}}</h4>
-      <p>{{appartment.type}}</p>
+      <img src="assets/images/{{ appartment.image }}.jpg" alt="">
+      <div class="caption">
+        <div *ngIf="!appartment.showDetails">
+          <h4>
+        <span class="badge badge-primary">
+          {{ appartment.type }}
+        </span>
+          </h4>
+          <h3>
+            <i class="glyphicon glyphicon-tag"></i>
+            {{ appartment.price | currency:'USD':true }}
+          </h3>
+          <h4>
+            <i class="glyphicon glyphicon-home"></i>
+            {{ appartment.address }}
+          </h4>
+          <hr>
+
+          <button
+            class="btn btn-sm btn-success"
+            *ngIf="!appartment.showDetails"
+            (click)="appartment.showDetails = !appartment.showDetails">
+            Details
+          </button>
+
+        </div>
+        <div *ngIf="appartment.showDetails">
+          <div class="details">
+            <h4>
+          <span class="badge badge-primary">
+            Beds: {{ appartment.bedrooms }}
+          </span>
+              <span class="badge badge-primary">
+            Baths: {{ appartment.bathrooms }}
+          </span>
+              <span class="badge badge-primary">
+            SqFt: {{ appartment.area }}
+          </span>
+            </h4>
+            <p>{{ appartment.description }}</p>
+
+            <hr>
+
+            <button
+              class="btn btn-sm btn-danger"
+              (click)="appartment.showDetails = !appartment.showDetails">
+              Close
+            </button>
+
+          </div>
+        </div>
+      </div>
     </div>
 
+
   </div>
+
 </div>
